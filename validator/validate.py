@@ -58,7 +58,5 @@ for i in range(0, len(intervals)):
     for j in range(0, len(intervals[i])):
         consecutive_intervals = intervals[i][j:j+2]
 
-        for k in range(i + 1, len(intervals)):
-            other_consecutive = intervals[k][j:j+2]
-
-            # Compare here?
+        if consecutive_intervals == [0, 0] or consecutive_intervals == [7, 7]:
+            print('parallel at ' + str(i) + ' ' + str(j))
