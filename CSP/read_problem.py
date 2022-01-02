@@ -18,7 +18,7 @@ if len(sys.argv) < 2:
 file = sys.argv[1]
 
 # Same scheme as in validate.py
-voices = [[int()], [], [], []]
+voices = [[], [], [], []]
 names = ['s', 'a', 't', 'b']  # For variable naming in CSP
 ranges = [(24, 45), (19, 38), (12, 33), (0, 24)]  # Pitch ranges for voices
 harmony = []
@@ -35,7 +35,7 @@ with open(file) as input_data:
             element = stripped[i:i+offset]
 
             if line_index < 4:
-                voices[line_index].append(int(element))
+                voices[line_index].append(int(element) if element.isdigit() else element)
             else:
                 harmony.append(parse_harmony(element))
 
@@ -52,7 +52,7 @@ for i in range(0, 4):
         if voice[j] == '??':  # If note is unknown, add it to the CSP
             variable = name + str(j + 1)
             problem.addVariable(variable, find_domain(harmony[j], i == 3))
-            problem.addConstraint(lambda x: range_[0] <= x <= range_[1], [variable])  # Add range constraint
+            problem.addConstraint(lambda x, w=range_[0], y=range_[1]: w <= x <= y, [variable])  # Add range constraint
 
             if i > 0:  # Voice crossing constraints
                 upper_neighbor = voices[i - 1][j]
@@ -60,4 +60,6 @@ for i in range(0, 4):
                 if upper_neighbor == '??':
                     problem.addConstraint(lambda x, y: x < y, [variable, upper_name])
                 else:
-                    problem.addConstraint(lambda x: x < upper_neighbor, [variable])
+                    problem.addConstraint(lambda x, y=upper_neighbor: x < y, [variable])
+
+print(problem.getSolution())
