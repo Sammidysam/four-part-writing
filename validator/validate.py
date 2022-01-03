@@ -50,18 +50,18 @@ intervals = [[], [], [], [], [], []]
 # Todo fix naming so that this all makes more sense?
 # Returns None if either voice has no motion.
 # Otherwise, returns the interval between the two voices at voice_index.
-def interval_between_voices(voice_combination, voice_index):
+def interval_between_voices(voice_combination, note_index):
     return (None
         if
-            voices[voice_combination[0]][voice_index] == voices[voice_combination[0]][voice_index - 1] or
-            voices[voice_combination[1]][voice_index] == voices[voice_combination[1]][voice_index - 1]
+            voices[voice_combination[0]][note_index] == voices[voice_combination[0]][note_index - 1] or
+            voices[voice_combination[1]][note_index] == voices[voice_combination[1]][note_index - 1]
         else
-            (voices[voice_combination[0]][voice_index] - voices[voice_combination[1]][voice_index]) % 12
+            (voices[voice_combination[0]][note_index] - voices[voice_combination[1]][note_index]) % 12
     )
 
-for voice_index in range(1, len(voices[0])):
+for note_index in range(1, len(voices[0])):
     for index, combination in enumerate(VOICE_COMBINATIONS):
-        intervals[index].append(interval_between_voices(combination, voice_index))
+        intervals[index].append(interval_between_voices(combination, note_index))
 
 for i in range(0, len(intervals)):
     for j in range(0, len(intervals[i])):
@@ -69,3 +69,12 @@ for i in range(0, len(intervals)):
 
         if consecutive_intervals == [0, 0] or consecutive_intervals == [7, 7]:
             print('parallel at ' + str(i) + ' ' + str(j))
+
+# Voices cannot cross
+for i in range(0, 3):
+    top_voice = i
+    bottom_voice = i + 1
+
+    for note_index in range(0, len(voices[0])):
+        if voices[top_voice][note_index] < voices[bottom_voice][note_index]:
+            print('cross at ' + str(top_voice) + ' ' + str(bottom_voice))
