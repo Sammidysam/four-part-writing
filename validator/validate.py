@@ -44,15 +44,24 @@ with open(input) as input_data:
 # 3 = between alto and tenor (1, 2)
 # 4 = between alto and bass (1, 3)
 # 5 = between tenor and bass (2, 3)
+VOICE_COMBINATIONS = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
 intervals = [[], [], [], [], [], []]
 
-for i in range(1, len(voices[0])):
-    intervals[0].append((voices[0][i] - voices[1][i]) % 12)
-    intervals[1].append((voices[0][i] - voices[2][i]) % 12)
-    intervals[2].append((voices[0][i] - voices[3][i]) % 12)
-    intervals[3].append((voices[1][i] - voices[2][i]) % 12)
-    intervals[4].append((voices[1][i] - voices[3][i]) % 12)
-    intervals[5].append((voices[2][i] - voices[3][i]) % 12)
+# Todo fix naming so that this all makes more sense?
+# Returns None if either voice has no motion.
+# Otherwise, returns the interval between the two voices at voice_index.
+def interval_between_voices(voice_combination, voice_index):
+    return (None
+        if
+            voices[voice_combination[0]][voice_index] == voices[voice_combination[0]][voice_index - 1] or
+            voices[voice_combination[1]][voice_index] == voices[voice_combination[1]][voice_index - 1]
+        else
+            (voices[voice_combination[0]][voice_index] - voices[voice_combination[1]][voice_index]) % 12
+    )
+
+for voice_index in range(1, len(voices[0])):
+    for index, combination in enumerate(VOICE_COMBINATIONS):
+        intervals[index].append(interval_between_voices(combination, voice_index))
 
 for i in range(0, len(intervals)):
     for j in range(0, len(intervals[i])):
