@@ -108,3 +108,19 @@ for note_index in range(0, len(harmony)):
     for note in harmony_notes[note_index]:
         if note not in voice_notes:
             print(str(note) + ' not present at ' + str(note_index))
+
+# 7th resolves downward by step.
+# Merge this loop with above loop?
+# voice_notes is a repetitive line
+for note_index in range(0, len(harmony)):
+    voice_notes = list(map(lambda note: note % 12, map(lambda voice: voice[note_index], voices)))
+
+    current_notes = harmony_notes[note_index]
+
+    if len(current_notes) > 3:
+        for index, note in enumerate(voice_notes):
+            if note == current_notes[3]:
+                seventh_voice = index
+
+        if voices[seventh_voice][note_index + 1] - voices[seventh_voice][note_index] not in [-1, -2]:
+            print(str(note_index) + ' does not have seventh down by step')
