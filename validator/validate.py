@@ -78,3 +78,33 @@ for i in range(0, 3):
     for note_index in range(0, len(voices[0])):
         if voices[top_voice][note_index] < voices[bottom_voice][note_index]:
             print('cross at ' + str(top_voice) + ' ' + str(bottom_voice))
+
+# All notes required of harmony are present.
+def notes_for_harmony(chord):
+    starting_note = int(chord[0], 16)
+    decoration = chord[1]
+
+    if decoration == 'M':
+        intervals = [4, 7]
+    elif decoration == 'm':
+        intervals = [3, 7]
+    elif decoration == '7':
+        intervals = [4, 7, 10]
+    else:
+        print('unknown decoration ' + decoration)
+
+    notes = [starting_note]
+
+    for interval in intervals:
+        notes.append((starting_note + interval) % 12)
+
+    return notes
+
+harmony_notes = list(map(notes_for_harmony, harmony))
+
+for note_index in range(0, len(harmony)):
+    voice_notes = list(map(lambda note: note % 12, map(lambda voice: voice[note_index], voices)))
+
+    for note in harmony_notes[note_index]:
+        if note not in voice_notes:
+            print(str(note) + ' not present at ' + str(note_index))
