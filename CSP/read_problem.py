@@ -2,6 +2,7 @@
 
 from constraint import *
 from find_domain import find_domain
+from rules import generate_constraints
 import sys
 
 
@@ -54,12 +55,17 @@ for i in range(0, 4):
             problem.addVariable(variable, find_domain(harmony[j], i == 3))
             problem.addConstraint(lambda x, w=range_[0], y=range_[1]: w <= x <= y, [variable])  # Add range constraint
 
-            if i > 0:  # Voice crossing constraints
+            if i > 0:  # Voice crossing constraints upper
                 upper_neighbor = voices[i - 1][j]
                 upper_name = names[i - 1] + str(j + 1)
                 if upper_neighbor == '??':
                     problem.addConstraint(lambda x, y: x < y, [variable, upper_name])
                 else:
                     problem.addConstraint(lambda x, y=upper_neighbor: x < y, [variable])
+            if i < 3:  # Voice crossing constraints lower
+                lower_neighbor = voices[i + 1][j]
+                if lower_neighbor != '??':
+                    problem.addConstraint(lambda x, y=lower_neighbor: x > y, [variable])
 
-print(problem.getSolution())
+generate_constraints(voices, harmony, problem, names)
+print(len(problem.getSolutions()))
