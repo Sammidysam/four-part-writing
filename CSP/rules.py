@@ -61,7 +61,7 @@ def parallels(voices, problem, names, interval):
                                     [pitch_variable, pitch_next_variable, other_pitch_next_variable])
                             else:
                                 problem.addConstraint(
-                                    lambda x1, x2, y1=17, y2=14:
+                                    lambda x1, x2, y1=other_pitch, y2=other_pitch_next:
                                     not (abs(x1 - y1) % 12 == interval and interval == abs(x2 - y2) % 12 and x1 != x2),
                                     [pitch_variable, pitch_next_variable])
                 # TODO: Implement extended cases
