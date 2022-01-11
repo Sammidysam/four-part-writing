@@ -71,7 +71,7 @@ for i in range(0, len(intervals)):
         consecutive_intervals = intervals[i][j:j+2]
 
         if consecutive_intervals == [0, 0] or consecutive_intervals == [7, 7]:
-            print('parallel at ' + str(i) + ' ' + str(j))
+            print('parallel at ' + str(i) + ' ' + str(j + 1))
 
 # Voices cannot cross
 for i in range(0, 3):
@@ -110,7 +110,7 @@ for note_index in range(0, len(harmony)):
 
     for note in harmony_notes[note_index]:
         if note not in voice_notes:
-            print(str(note) + ' not present at ' + str(note_index))
+            print(str(note) + ' not present at ' + str(note_index + 1))
 
 # 7th resolves downward by step.
 # Merge this loop with above loop?
@@ -126,4 +126,5 @@ for note_index in range(0, len(harmony)):
                 seventh_voice = index
 
         if voices[seventh_voice][note_index + 1] - voices[seventh_voice][note_index] not in [-1, -2]:
-            print(str(note_index) + ' does not have seventh down by step')
+            # State which voice is the seventh?
+            print(str(note_index + 1) + ' does not have seventh down by step')
