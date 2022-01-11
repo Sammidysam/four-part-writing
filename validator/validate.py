@@ -14,6 +14,13 @@ if len(sys.argv) < 2:
 
 input = sys.argv[1]
 
+rest_of_args = sys.argv[2:]
+
+if '-o5' in rest_of_args:
+    omit_fifth = True
+else:
+    omit_fifth = False
+
 # 0 = soprano
 # 1 = alto
 # 2 = tenor
@@ -88,11 +95,11 @@ def notes_for_harmony(chord):
     decoration = chord[1]
 
     if decoration == 'M':
-        intervals = [4, 7]
+        intervals = [4] if omit_fifth else [4, 7]
     elif decoration == 'm':
-        intervals = [3, 7]
+        intervals = [3] if omit_fifth else [3, 7]
     elif decoration == '7':
-        intervals = [4, 7, 10]
+        intervals = [4, 10] if omit_fifth else [4, 7, 10]
     else:
         print('unknown decoration ' + decoration)
 
