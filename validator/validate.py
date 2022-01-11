@@ -47,6 +47,14 @@ with open(input) as input_data:
 
         line_index += 1
 
+# Confirm all voices are in proper ranges.
+ranges = [[24, 45], [19, 38], [12, 33], [0, 24]]
+
+for voice_index, voice in enumerate(voices):
+    for note_index, note in enumerate(voice):
+        if note < ranges[voice_index][0] or note > ranges[voice_index][1]:
+            print('voice ' + str(voice_index) + ' out of range at ' + str(note_index + 1))
+
 # Calculate intervals between voices
 # 0 = between soprano and alto (0, 1)
 # 1 = between soprano and tenor (0, 2)
