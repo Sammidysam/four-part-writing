@@ -27,13 +27,16 @@ with open(input) as input_data:
     for line in input_data:
         stripped = line.rstrip()
 
-        for i in range(0, len(stripped), 2):
-            element = stripped[i:i+2]
+        reading_harmony = line_index >= 4
+        chars_to_read = 3 if reading_harmony else 2
 
-            if line_index < 4:
-                voices[line_index].append(int(element))
+        for i in range(0, len(stripped), chars_to_read):
+            element = stripped[i:i+chars_to_read]
+
+            if reading_harmony:
+                harmony.append([element[0], element[1], element[2]])
             else:
-                harmony.append([element[0], element[1]])
+                voices[line_index].append(int(element))
 
         line_index += 1
 
