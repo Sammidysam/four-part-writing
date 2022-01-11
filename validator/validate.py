@@ -14,6 +14,7 @@ if len(sys.argv) < 2:
 
 input = sys.argv[1]
 
+# Extra configuration of the validator can go in later arguments.
 rest_of_args = sys.argv[2:]
 
 if '-o5' in rest_of_args:
