@@ -1,0 +1,2 @@
+Pg. 1, #1: we do not handle suspensions, so chord 3 was simplified to
+V7
