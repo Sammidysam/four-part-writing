@@ -26,6 +26,7 @@ else:
 # 1 = alto
 # 2 = tenor
 # 3 = bass
+VOICE_NAMES = ['soprano', 'alto', 'tenor', 'bass']
 voices = [[], [], [], []]
 harmony = []
 
@@ -54,7 +55,7 @@ ranges = [[24, 45], [19, 38], [12, 33], [0, 24]]
 for voice_index, voice in enumerate(voices):
     for note_index, note in enumerate(voice):
         if note < ranges[voice_index][0] or note > ranges[voice_index][1]:
-            print('voice ' + str(voice_index) + ' out of range at ' + str(note_index + 1))
+            print(VOICE_NAMES[voice_index] + ' out of range at beat ' + str(note_index + 1))
 
 # Calculate intervals between voices
 # 0 = between soprano and alto (0, 1)
@@ -63,6 +64,7 @@ for voice_index, voice in enumerate(voices):
 # 3 = between alto and tenor (1, 2)
 # 4 = between alto and bass (1, 3)
 # 5 = between tenor and bass (2, 3)
+VOICE_COMBINATION_NAMES = ['soprano+alto', 'soprano+tenor', 'soprano+bass', 'alto+tenor', 'alto+bass', 'tenor+bass']
 VOICE_COMBINATIONS = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
 intervals = [[], [], [], [], [], []]
 
@@ -87,7 +89,9 @@ for i in range(0, len(intervals)):
         consecutive_intervals = intervals[i][j:j+2]
 
         if consecutive_intervals == [0, 0] or consecutive_intervals == [7, 7]:
-            print('parallel at ' + str(i) + ' ' + str(j + 1))
+            fifth = consecutive_intervals == [7, 7]
+
+            print('parallel ' + ('fifth' if fifth else 'octave') + ' between ' + VOICE_COMBINATION_NAMES[i] + ' at beat ' + str(j + 1) + ' into beat ' + str(j + 2))
 
 # Voices cannot cross
 for i in range(0, 3):
@@ -96,7 +100,7 @@ for i in range(0, 3):
 
     for note_index in range(0, len(voices[0])):
         if voices[top_voice][note_index] < voices[bottom_voice][note_index]:
-            print('cross at ' + str(top_voice) + ' ' + str(bottom_voice))
+            print('voice cross between ' + VOICE_NAMES[top_voice] + ' and ' + VOICE_NAMES[bottom_voice] + ' at beat ' + str(note_index + 1))
 
 # All notes required of harmony are present.
 def notes_for_harmony(chord):
@@ -114,7 +118,7 @@ def notes_for_harmony(chord):
     elif decoration == 'D':
         intervals = [3, 9] if omit_fifth else [3, 6, 9]
     else:
-        print('unknown decoration ' + decoration)
+        print('unknown chord decoration ' + decoration)
 
     notes = [starting_note]
 
@@ -125,12 +129,14 @@ def notes_for_harmony(chord):
 
 harmony_notes = list(map(notes_for_harmony, harmony))
 
+NOTE_NAMES = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']
+
 for note_index in range(0, len(harmony)):
     voice_notes = list(map(lambda note: note % 12, map(lambda voice: voice[note_index], voices)))
 
     for note in harmony_notes[note_index]:
         if note not in voice_notes:
-            print(str(note) + ' not present at ' + str(note_index + 1))
+            print(NOTE_NAMES[note] + ' not present at beat ' + str(note_index + 1))
 
 # 7th resolves downward by step.
 # Merge this loop with above loop?
@@ -146,5 +152,5 @@ for note_index in range(0, len(harmony)):
                 seventh_voice = index
 
         if voices[seventh_voice][note_index + 1] - voices[seventh_voice][note_index] not in [-1, -2]:
-            # State which voice is the seventh?
-            print(str(note_index + 1) + ' does not have seventh down by step')
+            print('beat ' + str(note_index + 1) + ' does not have seventh down by step')
+            print('expected in ' + VOICE_NAMES[seventh_voice])
