@@ -22,11 +22,11 @@ def expand_harmony(harmony):
     # Adding the 3rd
     if harmony[1] in ['M', '7']:
         pitch_content.append((root + 4) % 12)
-    elif harmony[1] in ['m', 'D', 'd']:
+    elif harmony[1] in ['m', 'b', 'D', 'd']:
         pitch_content.append((root + 3) % 12)
 
     # Adding the 5th
-    if harmony[1] not in ['D', 'd']:
+    if harmony[1] not in ['b', 'D', 'd']:
         pitch_content.append((root + 7) % 12)
     else:
         pitch_content.append((root + 6) % 12)
