@@ -16,3 +16,11 @@ need diminished without seventh chord symbol
 Pg. 1, II, #1: need diminished without seventh chord symbol
 Pg. 1, II, #4: left out entire suspension beat
 Pg. 1, II, #5: need diminished without seventh chord symbol
+
+Pg. 2, #1: simplified the eighth notes into only the 7th
+being in the bass
+took out the suspension beat entirely and did not try
+to have 8th notes
+Pg. 2, #2: took out the suspension beat entirely and did not try
+to have 8th notes
+V42 was taken to go to i6, but not entirely sure if that is the rule
