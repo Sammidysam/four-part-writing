@@ -26,3 +26,14 @@ to have 8th notes
 V42 was taken to go to i6, but not entirely sure if that is the rule
 
 Pg. 3 is not relevant to this program, so skipped
+
+Pg. 4, #1: need diminished without seventh chord symbol
+left out suspension beat entirely
+left out 8th notes in bass
+Pg. 4, #2: I do not know what P64 F# would define here,
+so I skipped this rather than think about it too much
+Pg. 4, #3: figuring this might have a validation error,
+as I think the suspension calls for omitting the fifth.
+left out the suspension beat entirely
+need diminished without seventh chord symbol
+Pg. 4, #4: left out suspension beat entirely
