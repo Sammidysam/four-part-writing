@@ -117,6 +117,8 @@ def notes_for_harmony(chord):
         intervals = [3, 10] if omit_fifth else [3, 6, 10]
     elif decoration == 'D':
         intervals = [3, 9] if omit_fifth else [3, 6, 9]
+    elif decoration == 'b':
+        intervals = [3] if omit_fifth else [3, 6]
     else:
         print('unknown chord decoration ' + decoration)
 
