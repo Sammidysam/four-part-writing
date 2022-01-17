@@ -5,17 +5,12 @@ For #2b with a fully diminished 7 chord, I also changed the second to last
 soprano note to G natural
 Pg. 1, I, #3: because we do not handle suspensions, I left out beat 3 of the
 first full measure entirely
-We also need a diminished without seventh chord symbol - that is left as ? for now
-Pg. 1, I, #4: need a diminished without seventh chord symbol - left as ?
 Pg. 1, I, #5: splitting handwritten chord into two examples.
 leaving out the suspension beat entirely
 Pg. 1, I, #6: splitting handwritten chord into two examples.
 leaving out suspension beat entirely
-need diminished without seventh chord symbol
 
-Pg. 1, II, #1: need diminished without seventh chord symbol
 Pg. 1, II, #4: left out entire suspension beat
-Pg. 1, II, #5: need diminished without seventh chord symbol
 
 Pg. 2, #1: simplified the eighth notes into only the 7th
 being in the bass
@@ -27,15 +22,13 @@ V42 was taken to go to i6, but not entirely sure if that is the rule
 
 Pg. 3 is not relevant to this program, so skipped
 
-Pg. 4, #1: need diminished without seventh chord symbol
-left out suspension beat entirely
+Pg. 4, #1: left out suspension beat entirely
 left out 8th notes in bass
 Pg. 4, #2: I do not know what P64 F# would define here,
 so I skipped this rather than think about it too much
 Pg. 4, #3: figuring this might have a validation error,
 as I think the suspension calls for omitting the fifth.
 left out the suspension beat entirely
-need diminished without seventh chord symbol
 Pg. 4, #4: left out suspension beat entirely
 
 Pg. 5: do
