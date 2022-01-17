@@ -1,8 +1,18 @@
-Pg. 1, #1: we do not handle suspensions, so chord 3 was simplified to V7
-Pg. 1, #2: not sure what the handwritten switch in chord is supposed to mean,
+Pg. 1, I, #1: we do not handle suspensions, so chord 3 was simplified to V7
+Pg. 1, I, #2: not sure what the handwritten switch in chord is supposed to mean,
 so figured I would make two examples out of it
 For #2b with a fully diminished 7 chord, I also changed the second to last
 soprano note to G natural
-Pg. 1, #3: because we do not handle suspensions, I left out beat 3 of the
+Pg. 1, I, #3: because we do not handle suspensions, I left out beat 3 of the
 first full measure entirely
-We also need a diminished without seventh chord symbol
+We also need a diminished without seventh chord symbol - that is left as ? for now
+Pg. 1, I, #4: need a diminished without seventh chord symbol - left as ?
+Pg. 1, I, #5: splitting handwritten chord into two examples.
+leaving out the suspension beat entirely
+Pg. 1, I, #6: splitting handwritten chord into two examples.
+leaving out suspension beat entirely
+need diminished without seventh chord symbol
+
+Pg. 1, II, #1: need diminished without seventh chord symbol
+Pg. 1, II, #4: left out entire suspension beat
+Pg. 1, II, #5: need diminished without seventh chord symbol
