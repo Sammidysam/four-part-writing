@@ -77,7 +77,7 @@ for key in solution:
 
 with open('temp.4pw', 'w+') as output:
     for voice in voices:
-        output.write(''.join(map(str, voice)))
+        output.write(''.join(map(str, voice)) + '\n')
     for harm in harmony:
         output.write(''.join(map(str, harm)))
 
