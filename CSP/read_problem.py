@@ -3,7 +3,9 @@
 from constraint import *
 from find_domain import find_domain
 from rules import generate_constraints
+from subprocess import call
 import sys
+import tempfile
 
 
 # Helper function that parses a 3 character harmony string into a len 3 list (e.g. 5Mr -> [5, 'M', 'r'])
@@ -68,4 +70,15 @@ for i in range(0, 4):
                     problem.addConstraint(lambda x, y=lower_neighbor: x > y, [variable])
 
 generate_constraints(voices, harmony, problem, names)
-print(len(problem.getSolutions()))
+solution = problem.getSolution()
+
+for key in solution:
+    voices[names.index(key[0])][int(key[1]) - 1] = solution[key]
+
+with open('temp.4pw', 'w+') as output:
+    for voice in voices:
+        output.write(''.join(map(str, voice)))
+    for harm in harmony:
+        output.write(''.join(map(str, harm)))
+
+    call(["python", "validator/validate.py", 'temp.4pw'])
