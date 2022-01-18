@@ -74,13 +74,14 @@ intervals = [[], [], [], [], [], []]
 def interval_between_voices(voice_combination, note_index):
     return (None
         if
-            voices[voice_combination[0]][note_index] == voices[voice_combination[0]][note_index - 1] or
-            voices[voice_combination[1]][note_index] == voices[voice_combination[1]][note_index - 1]
+            note_index > 0 and
+            (voices[voice_combination[0]][note_index] == voices[voice_combination[0]][note_index - 1] or
+            voices[voice_combination[1]][note_index] == voices[voice_combination[1]][note_index - 1])
         else
             (voices[voice_combination[0]][note_index] - voices[voice_combination[1]][note_index]) % 12
     )
 
-for note_index in range(1, len(voices[0])):
+for note_index in range(0, len(voices[0])):
     for index, combination in enumerate(VOICE_COMBINATIONS):
         intervals[index].append(interval_between_voices(combination, note_index))
 
@@ -153,6 +154,6 @@ for note_index in range(0, len(harmony)):
             if note == current_notes[3]:
                 seventh_voice = index
 
-        if voices[seventh_voice][note_index + 1] - voices[seventh_voice][note_index] not in [-1, -2]:
-            print('beat ' + str(note_index + 1) + ' does not have seventh down by step')
-            print('expected in ' + VOICE_NAMES[seventh_voice])
+        # If seventh_voice is not defined, there is a harmony error that will be reported above.
+        if seventh_voice and voices[seventh_voice][note_index + 1] - voices[seventh_voice][note_index] not in [-1, -2]:
+            print('beat ' + str(note_index + 1) + ' does not have seventh down by step: expected in ' + VOICE_NAMES[seventh_voice])
