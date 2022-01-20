@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 # This file will handle the reading in of a problem in 4pw format into our CSP model
 
 from constraint import *
