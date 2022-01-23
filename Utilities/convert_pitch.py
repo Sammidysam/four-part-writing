@@ -22,8 +22,12 @@ elif sys.argv[1] == '-f':
 
             stripped = line.rstrip()
             for i in range(0, len(stripped), 2):
-                octave, pitch = divmod(int(stripped[i:i + 2]), 12)
-                notes.append(pitches[pitch] + str(octave + 2))
+                partial = stripped[i:i+2]
+                if partial == '??':
+                    notes.append('??')
+                else:
+                    octave, pitch = divmod(int(partial), 12)
+                    notes.append(pitches[pitch] + str(octave + 2))
             print(' '.join(notes))
 
             line_index += 1
