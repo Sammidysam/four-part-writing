@@ -4,6 +4,14 @@ Doing music theory homework automatically through modeling four-part writing as 
 For a description of the project, see the Final Report PDF included
 in the repository.
 
+# Dependencies
+
+`python-constraint` is required for the CSP portion of this project
+to run.
+To install it, run `pip3 install python-constraint`.
+Or, you can use `pip` if that uses Python3.
+Python3 is required for this project.
+
 # Running
 
 To run the program, execute `CSP/read_problem.py` with an argument of
