@@ -1,0 +1,4 @@
+#1: I think this could be a good edge case of the
+partwriting being complete, but unnecessary
+#4: Andrew said he would look this over more
+#5: ignored suspension beat entirely
