@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 # A little utility for converting pitches in our decimal form into scientific pitch notation (e.g. 33 -> A4)
 # Should be given an argument which is an uninterrupted line of pitches (e.g. 33333434333129)
 # Or, optional flag -f followed by filename to instead give it a .4pw file as input instead
