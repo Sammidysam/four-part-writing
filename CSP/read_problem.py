@@ -82,4 +82,4 @@ with open('temp.4pw', 'w+') as output:
     for harm in harmony:
         output.write(''.join(map(str, harm)))
 
-    call(["python", "validator/validate.py", 'temp.4pw'])
+call(["python", "validator/validate.py", 'temp.4pw'])
